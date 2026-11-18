@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: viajando-soy-feliz
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "3000"
+      - key: DB_PATH
+        value: /app/data/viajes-ia.sqlite
+      - key: TRAVELPAYOUTS_ORIGIN
+        value: ES
+      - key: TRAVELPAYOUTS_MARKET
+        value: es
+      - key: TRAVELPAYOUTS_LIMIT
+        value: "100"
+      - key: ADMIN_SCAN_TOKEN
+        generateValue: true
+      - key: TRAVELPAYOUTS_TOKEN
+        sync: false

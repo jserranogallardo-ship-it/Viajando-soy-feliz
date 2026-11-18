@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10283b">
+  <meta name="description" content="Buscador inteligente de ofertas de viajes desde España.">
+  <title>Viajando soy Feliz</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">✈</span><span>Viajando soy <span class="brand-ai">Feliz</span></span></a>
+  <div class="top-actions"><span class="status-dot"></span><span id="engine-status">Motor pendiente de conectar</span><button id="notify-btn" class="ghost">Activar avisos</button></div>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">TU PRÓXIMO VIAJE EMPIEZA AQUÍ</p>
+      <h1>Los chollos no esperan.<br><em>Nosotros los buscamos.</em></h1>
+      <p>Compara oportunidades desde aeropuertos de España y revisa su precio y la fiabilidad del vendedor antes de reservar.</p>
+      <div class="hero-pills"><span>✓ Búsqueda multidestino</span><span>✓ Control de precios</span><span>✓ Revisión antifraude</span></div>
+    </div>
+    <div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="plane">✈</div><div class="arc"></div><div class="art-caption">Tu próxima escapada<br><b>puede estar más cerca</b></div></div>
+  </section>
+
+  <section class="search-panel">
+    <div class="section-heading"><div><p class="eyebrow">CONFIGURA TU BÚSQUEDA</p><h2>¿A dónde te apetece ir?</h2></div><span class="budget-tag">Presupuesto: 300 € / persona</span></div>
+    <form id="search-form">
+      <div class="field-grid">
+        <label>Origen<select id="origin"><option value="Cualquier aeropuerto de España">Cualquier aeropuerto de España</option><option>Granada (GRX)</option><option>Málaga (AGP)</option><option>Sevilla (SVQ)</option><option>Madrid (MAD)</option><option>Barcelona (BCN)</option><option>Valencia (VLC)</option></select></label>
+        <label>Destino<input id="destination" placeholder="Cualquier destino" autocomplete="off"></label>
+        <label>Fecha<select id="dates"><option value="flexible">Flexible · todo el año</option><option value="weekend">Fines de semana</option><option value="next30">Próximos 30 días</option><option value="summer">Verano</option></select></label>
+        <label>Precio máximo por persona<div class="price-input"><span>€</span><input id="budget" type="number" min="1" max="300" value="300"></div></label>
+      </div>
+      <div class="category-row"><span class="field-label">Qué buscamos</span>
+        <label class="check"><input type="checkbox" value="Vuelos" checked> Vuelos</label>
+        <label class="check"><input type="checkbox" value="Hoteles y apartamentos" checked> Hoteles</label>
+        <label class="check"><input type="checkbox" value="Vuelo + hotel" checked> Vuelo + hotel</label>
+        <label class="check"><input type="checkbox" value="Cruceros" checked> Cruceros</label>
+        <label class="check"><input type="checkbox" value="Escapadas y viajes organizados" checked> Escapadas y circuitos</label>
+      </div>
+      <button class="primary" type="submit">Buscar ofertas <span>→</span></button>
+    </form>
+  </section>
+
+  <section class="results">
+    <div class="results-head"><div><p class="eyebrow">OPORTUNIDADES PARA TI</p><h2>Ofertas encontradas</h2></div><select id="sort"><option value="recent">Más recientes</option><option value="price">Precio más bajo</option></select></div>
+    <div id="results-list" class="empty-state"><div class="empty-icon">⌕</div><h3>Tu radar está preparado</h3><p>La interfaz ya está lista. Para mostrar ofertas reales hay que conectar proveedores de vuelos, alojamientos y viajes, además del motor de verificación.</p><span class="empty-note">No mostramos precios inventados ni ofertas de ejemplo como si fueran reales.</span></div>
+  </section>
+
+  <section class="trust">
+    <div class="trust-intro"><p class="eyebrow">COMPRA CON MÁS INFORMACIÓN</p><h2>Una oferta no es un chollo si no es fiable.</h2><p>La ficha de cada oportunidad deberá mostrar pruebas y señales claras, no una promesa automática de que una web es segura.</p></div>
+    <div class="trust-items">
+      <article><span class="trust-icon">€</span><div><b>Precio contrastado</b><p>Fecha, moneda, tasas y equipaje incluidos cuando la fuente lo permita.</p></div></article>
+      <article><span class="trust-icon">✓</span><div><b>Vendedor revisado</b><p>Identidad comercial, dominio, datos de contacto y reputación pública.</p></div></article>
+      <article><span class="trust-icon">!</span><div><b>Alertas de riesgo</b><p>Señales sospechosas, condiciones opacas o diferencias de precio antes de salir a la web del vendedor.</p></div></article>
+    </div>
+  </section>
+</main>
+<footer><span>VIAJANDO SOY FELIZ</span><span>Precios orientativos · No procesa reservas ni pagos</span></footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="/app.js"></script>
+</body>
+</html>
