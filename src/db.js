@@ -30,7 +30,7 @@ export function saveOffers(offers=[]){
  tx(offers);
 }
 export function getOffers(filters={}){
- let rows=db.prepare("SELECT * FROM offers let rows = db.prepare("SELECT * FROM offers ORDER BY checked_at DESC").all();
+ let rows = db.prepare("SELECT * FROM offers ORDER BY checked_at DESC").all();
  if(filters.budget) rows=rows.filter(x=>x.price<=filters.budget);
  if(filters.categories?.length) rows=rows.filter(x=>filters.categories.includes(x.category));
  if(filters.destination) rows=rows.filter(x=>(x.destination||"").toLowerCase().includes(filters.destination.toLowerCase()));
