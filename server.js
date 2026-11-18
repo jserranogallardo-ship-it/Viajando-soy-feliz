@@ -19,7 +19,7 @@ app.get("/api/scan/status",(req,res)=>res.json(getScanStatus()));
 app.post("/api/scan/run",async(req,res)=>{
  const token = process.env.ADMIN_SCAN_TOKEN;
 if (!token) return res.status(503).json({ error: "scan_disabled" });
-if (req.get("x-admin-token") !== token) return res.status(401).json({ error: "unauthorized" });  req.get("x-admin-token")!==process.env.ADMIN_SCAN_TOKEN) return res.status(401).json({error:"unauthorized"});
+if (req.get("x-admin-token") !== token) return res.status(401).json({ error: "unauthorized" });
   try { const result=await scanAllProviders(); saveOffers(result.offers); res.json({ok:true,...result,scan:getScanStatus()}); }
   catch(e){res.status(500).json({ok:false,error:"scan_failed"});}
 });
