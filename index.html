@@ -29,7 +29,17 @@
     <div class="section-heading"><div><p class="eyebrow">CONFIGURA TU BÚSQUEDA</p><h2>¿A dónde te apetece ir?</h2></div><span class="budget-tag">Presupuesto: 300 € / persona</span></div>
     <form id="search-form">
       <div class="field-grid">
-        <label>Origen<select id="origin"><option value="Cualquier aeropuerto de España">Cualquier aeropuerto de España</option><option>Granada (GRX)</option><option>Málaga (AGP)</option><option>Sevilla (SVQ)</option><option>Madrid (MAD)</option><option>Barcelona (BCN)</option><option>Valencia (VLC)</option></select></label>
+         <label>Origen
+  <select id="origin">
+    <option value="Cualquier aeropuerto de España">Cualquier aeropuerto de España</option>
+    <option value="GRX">Granada (GRX)</option>
+    <option value="AGP">Málaga (AGP)</option>
+    <option value="SVQ">Sevilla (SVQ)</option>
+    <option value="MAD">Madrid (MAD)</option>
+    <option value="BCN">Barcelona (BCN)</option>
+    <option value="VLC">Valencia (VLC)</option>
+  </select>
+</label>
         <label>Destino<input id="destination" placeholder="Cualquier destino" autocomplete="off"></label>
         <label>Fecha<select id="dates"><option value="flexible">Flexible · todo el año</option><option value="weekend">Fines de semana</option><option value="next30">Próximos 30 días</option><option value="summer">Verano</option></select></label>
         <label>Precio máximo por persona<div class="price-input"><span>€</span><input id="budget" type="number" min="1" max="300" value="300"></div></label>
