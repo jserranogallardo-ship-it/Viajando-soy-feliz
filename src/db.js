@@ -35,6 +35,21 @@ export function getOffers(filters={}){
  if(filters.categories?.length) rows=rows.filter(x=>filters.categories.includes(x.category));
  if(filters.destination) rows=rows.filter(x=>(x.destination||"").toLowerCase().includes(filters.destination.toLowerCase()));
  if(filters.origin && filters.origin!=="Cualquier aeropuerto de España") rows=rows.filter(x=>(x.origin||"").includes(filters.origin));
+ if (["next30", "weekend", "summer"].includes(filters.dates)) {
+  const today = new Date().toISOString().slice(0, 10);
+  const cutoff = new Date(Date.parse(today) + 30 * 86400000)
+    .toISOString().slice(0, 10);
+
+  rows = rows.filter(({ departure_date: departure }) => {
+    if (!departure || departure < today) return false;
+    if (filters.dates === "next30") return departure < cutoff;
+    if (filters.dates === "summer") {
+      return ["06", "07", "08"].includes(departure.slice(5, 7));
+    }
+    const day = new Date(departure).getUTCDay();
+    return day === 0 || day === 6;
+  });
+}
  return rows.map(x=>({...x,risk_reasons:JSON.parse(x.risk_reasons||"[]"),raw_json:undefined}));
 }
 export function getScanStatus(){return db.prepare("SELECT * FROM scan_runs ORDER BY id DESC LIMIT 1").get()||{status:"not_started"};}
